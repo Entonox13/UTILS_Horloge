@@ -1,0 +1,7 @@
+#généralités
+-application python
+-dev dans environnement conda spécifique au projet
+-tkinter pour le gui
+-préparer actions 
+
+#workflow utilisateur
