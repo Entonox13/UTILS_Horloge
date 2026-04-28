@@ -1,0 +1,8 @@
+[project]
+name = "utils-horloge"
+version = "0.1.0"
+description = "Horloge plein ecran configurable en Tkinter."
+requires-python = ">=3.11,<3.12"
+
+[tool.pyinstaller]
+entry = "main.py"

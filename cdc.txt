@@ -2,6 +2,19 @@
 -application python
 -dev dans environnement conda spécifique au projet
 -tkinter pour le gui
--préparer actions 
+-préparer actions github pour compiler un .exe (fichier unique) et une appimage
+
+#usage
+-affichage d'une horloge en plein écran
+-au lancement du programme une fenetre de configuration
+-configuration: couleur fond (noir par défaut), couleur texte (blanc par défaut), taille texte, police texte (ne pas complexifier avec les polices, pas d'ajout externe etc, simple)
+-bouton lancer pour afficher l'horloge en plein écran avec les config définies
+-échap pour revenir à la fenetre principale (configuration)
+
 
 #workflow utilisateur
+-lance l'exe/appimage
+-fait ses choix de configuration
+-bouton lancer pour plein écran
+-quitte avec echap
+-quitte l'app principale avec bouton quitter
