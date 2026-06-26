@@ -71,19 +71,32 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: read
     steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: horloge-*
+          merge-multiple: true
+          path: release-assets
+
+      - name: Verify release assets
+        run: ls -lah release-assets/
+
       - name: Publish release assets
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
           replacesArtifacts: true
+          artifactErrorsFailBuild: true
           tag: latest
+          commit: main
           name: Latest build
           body: |
             Binaires generes automatiquement depuis le commit `${{ github.sha }}`.
 
             - Windows : `horloge.exe`
             - Linux : `Horloge-x86_64.AppImage`
-          artifacts: horloge-exe,horloge-appimage
+          artifacts: release-assets/horloge.exe,release-assets/Horloge-x86_64.AppImage
           artifactContentType: application/octet-stream
           makeLatest: true
