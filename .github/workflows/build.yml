@@ -14,10 +14,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -31,7 +31,7 @@ jobs:
         run: ./scripts/build_exe.ps1
 
       - name: Upload .exe
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: horloge-exe
           path: dist/horloge.exe
@@ -41,10 +41,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -59,7 +59,7 @@ jobs:
           ./scripts/build_appimage.sh
 
       - name: Upload AppImage
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: horloge-appimage
           path: dist/Horloge-x86_64.AppImage
@@ -74,7 +74,7 @@ jobs:
       actions: read
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           pattern: horloge-*
           merge-multiple: true
