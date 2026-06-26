@@ -2,6 +2,28 @@
 
 Application Python/Tkinter qui affiche une horloge en plein ecran avec une fenetre de configuration au lancement.
 
+## Telechargement
+
+Binaires precompiles (mis a jour automatiquement a chaque push sur `main`) :
+
+| Plateforme | Fichier | Lien |
+|------------|---------|------|
+| Windows | `horloge.exe` | [Telecharger](https://github.com/Entonox13/UTILS_Horloge/releases/latest/download/horloge.exe) |
+| Linux | `Horloge-x86_64.AppImage` | [Telecharger](https://github.com/Entonox13/UTILS_Horloge/releases/latest/download/Horloge-x86_64.AppImage) |
+
+Page des releases : [github.com/Entonox13/UTILS_Horloge/releases/latest](https://github.com/Entonox13/UTILS_Horloge/releases/latest)
+
+### Utilisation des binaires
+
+**Windows** : lancer `horloge.exe`.
+
+**Linux** : rendre l'AppImage executable puis la lancer :
+
+```bash
+chmod +x Horloge-x86_64.AppImage
+./Horloge-x86_64.AppImage
+```
+
 ## Fonctionnalites
 
 - Fenetre de configuration au demarrage
@@ -51,7 +73,7 @@ chmod +x scripts/build_appimage.sh
 
 ## GitHub Actions
 
-Le workflow `.github/workflows/build.yml` produit automatiquement:
+Le workflow [`.github/workflows/build.yml`](.github/workflows/build.yml) :
 
-- `horloge.exe` (artefact `horloge-exe`)
-- `Horloge-x86_64.AppImage` (artefact `horloge-appimage`)
+1. compile `horloge.exe` (Windows) et `Horloge-x86_64.AppImage` (Linux) ;
+2. publie les deux fichiers dans la [release `latest`](https://github.com/Entonox13/UTILS_Horloge/releases/latest), accessibles depuis les liens ci-dessus.

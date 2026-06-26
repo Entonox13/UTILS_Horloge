@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build-windows-exe:
     runs-on: windows-latest
@@ -61,3 +64,26 @@ jobs:
           name: horloge-appimage
           path: dist/Horloge-x86_64.AppImage
           if-no-files-found: error
+
+  release:
+    needs: [build-windows-exe, build-linux-appimage]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Publish release assets
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          replacesArtifacts: true
+          tag: latest
+          name: Latest build
+          body: |
+            Binaires generes automatiquement depuis le commit `${{ github.sha }}`.
+
+            - Windows : `horloge.exe`
+            - Linux : `Horloge-x86_64.AppImage`
+          artifacts: horloge-exe,horloge-appimage
+          artifactContentType: application/octet-stream
+          makeLatest: true
