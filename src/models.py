@@ -16,6 +16,7 @@ class ClockConfig:
     font_size: int = 300
     show_seconds: bool = False
     show_exam_labels: bool = True
+    tiers_temps: bool = False
     start_hour: int = 8
     start_minute: int = 0
     segments: list[ExamSegment] = field(default_factory=lambda: [ExamSegment("Partie 1", 60)])

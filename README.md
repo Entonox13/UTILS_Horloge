@@ -71,6 +71,7 @@ Si vous voulez seulement l'heure, sans horaires d'épreuve, décochez **« Affic
 
 - Sélectionnez un **preset** (ex. « Français DNB ») ou composez votre propre enchaînement de parties et pauses.
 - Indiquez l'**heure de début** de l'épreuve (heure à laquelle commence la première partie).
+- Cochez **Tiers temps** si des élèves bénéficient d'un tiers-temps : les durées des **parties** sont allongées de 33 % pour le calcul des horaires, sans modifier les valeurs affichées dans la timeline.
 
 ### 4. Afficher l'horloge
 
@@ -121,6 +122,7 @@ Cliquez sur **Choisir** pour ouvrir le sélecteur de couleur de votre système.
 |---------|------|
 | **Preset** | Modèle prédéfini (matières du DNB, etc.). Choisir **Personnalisé** si vous modifiez la timeline à la main. |
 | **Heure de début** | Heure de début de la première partie (format 24 h). |
+| **Tiers temps** | Allonge de **33 %** les durées des **parties** (pas les pauses) pour le calcul des horaires en plein écran. Les minutes saisies dans la timeline restent inchangées. |
 | **Timeline** | Enchaînement des **parties** et **pauses**, avec leur durée en minutes. |
 
 #### Timeline : boutons et actions
@@ -130,7 +132,7 @@ Cliquez sur **Choisir** pour ouvrir le sélecteur de couleur de votre système.
 - **^ / v** : monter ou descendre une ligne.
 - **x** : supprimer une ligne (il faut garder au moins une partie).
 
-Les horaires affichés en bas de l'écran sont **calculés automatiquement** à partir de l'heure de début et des durées.
+Les horaires affichés en bas de l'écran sont **calculés automatiquement** à partir de l'heure de début et des durées (avec le tiers-temps appliqué si la case est cochée).
 
 #### Informations affichées en plein écran
 

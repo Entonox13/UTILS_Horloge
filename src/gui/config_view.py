@@ -27,6 +27,7 @@ class ConfigView:
         self.size_var = tk.IntVar(value=config.font_size)
         self.show_seconds_var = tk.BooleanVar(value=config.show_seconds)
         self.show_exam_labels_var = tk.BooleanVar(value=config.show_exam_labels)
+        self._initial_tiers_temps = config.tiers_temps
 
         self._available_fonts = available_fonts
         self._on_launch: Callable[[], None] | None = None
@@ -113,6 +114,7 @@ class ConfigView:
             is_applying_preset=self._timeline_applying_preset,
             safe_int=self._safe_int,
         )
+        self._timeline.tiers_temps_var.set(self._initial_tiers_temps)
 
         actions = ttk.Frame(self.frame, padding=(theme.PADDING_LARGE, theme.PADDING_NORMAL))
         actions.grid(row=1, column=0, sticky="ew")
@@ -158,6 +160,7 @@ class ConfigView:
             font_size=max(24, int(self.size_var.get())),
             show_seconds=self.show_seconds_var.get(),
             show_exam_labels=self.show_exam_labels_var.get(),
+            tiers_temps=timeline.tiers_temps_var.get(),
             start_hour=self._safe_int(timeline.start_hour_var, 0, 23, 8),
             start_minute=self._safe_int(timeline.start_minute_var, 0, 59, 0),
             segments=timeline.segments(),

@@ -40,6 +40,7 @@ class TimelineEditor:
         self.preset_var = tk.StringVar(value=CUSTOM_PRESET_NAME)
         self.start_hour_var = tk.IntVar(value=8)
         self.start_minute_var = tk.IntVar(value=0)
+        self.tiers_temps_var = tk.BooleanVar(value=False)
         self._rows: list[_TimelineRow] = []
         self._applying_preset = False
 
@@ -85,14 +86,18 @@ class TimelineEditor:
             wrap=True,
         ).pack(side="left", padx=(4, 0))
 
+        ttk.Checkbutton(parent, text="Tiers temps", variable=self.tiers_temps_var).grid(
+            row=2, column=0, columnspan=2, sticky="w", pady=6
+        )
+
         from src import theme
 
         ttk.Label(parent, text=theme.SECTION_TIMELINE, style="Section.TLabel").grid(
-            row=2, column=0, columnspan=2, sticky="w", pady=(12, 8)
+            row=3, column=0, columnspan=2, sticky="w", pady=(12, 8)
         )
 
         timeline_container = ttk.Frame(parent)
-        timeline_container.grid(row=3, column=0, columnspan=2, sticky="ew")
+        timeline_container.grid(row=4, column=0, columnspan=2, sticky="ew")
         timeline_container.columnconfigure(0, weight=1)
 
         self.canvas = tk.Canvas(
@@ -113,7 +118,7 @@ class TimelineEditor:
         self.canvas.bind("<Configure>", lambda e: self.canvas.itemconfigure(self._window_id, width=e.width))
 
         timeline_actions = ttk.Frame(parent)
-        timeline_actions.grid(row=4, column=0, columnspan=2, sticky="w", pady=(10, 0))
+        timeline_actions.grid(row=5, column=0, columnspan=2, sticky="w", pady=(10, 0))
         ttk.Button(timeline_actions, text="+ Partie", command=self._add_part_row).pack(side="left")
         ttk.Button(timeline_actions, text="+ Pause", command=self._add_pause_row).pack(side="left", padx=(8, 0))
 

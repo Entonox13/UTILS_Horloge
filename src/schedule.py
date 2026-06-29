@@ -2,12 +2,19 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-from src.constants import DEPARTURE_OFFSET
+from src.constants import DEPARTURE_OFFSET, TIERS_TEMPS_FACTOR
 from src.models import ClockConfig, ExamDisplayState, ExamSchedule, ScheduledSegment
+from src.presets import ExamSegment
 
 
 def _reference_datetime(hour: int, minute: int) -> datetime:
     return datetime(2000, 1, 1, hour, minute)
+
+
+def effective_duration_minutes(segment: ExamSegment, *, tiers_temps: bool) -> int:
+    if tiers_temps and not segment.is_pause:
+        return round(segment.duration_minutes * TIERS_TEMPS_FACTOR)
+    return segment.duration_minutes
 
 
 def build_exam_schedule(config: ClockConfig) -> ExamSchedule:
@@ -17,7 +24,8 @@ def build_exam_schedule(config: ClockConfig) -> ExamSchedule:
     part_segments: list[ScheduledSegment] = []
 
     for segment in config.segments:
-        end = current + timedelta(minutes=segment.duration_minutes)
+        duration = effective_duration_minutes(segment, tiers_temps=config.tiers_temps)
+        end = current + timedelta(minutes=duration)
         scheduled_segment = ScheduledSegment(
             name=segment.name,
             start=current,
