@@ -3,7 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - python=3.11
-  - tk
+  - tk=8.6.13=xft_h891c84d_3
   - pip
   - pip:
       - pyinstaller

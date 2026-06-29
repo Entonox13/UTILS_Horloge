@@ -1,0 +1,15 @@
+#Français DNB
+-Partie 1 durée 70min
+-Dictée durée 20min
+-Pause 15min
+-Partie 2 durée 90min
+
+#HGEMC DNB
+-Partie 1 durée 120min
+
+#Sciences DNB
+-Partie 1 durée 60min
+
+# Maths DNB
+-Partie 1 (Calculatrice interdite) durée 20min
+-Partie 2 durée 100min
